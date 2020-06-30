@@ -8,6 +8,21 @@
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
+  "lint-staged": {
+    "*.(js|ts|vue)": [
+      "npm run lint",
+      "pretty-quick --staged",
+      "git add"
+    ],
+    "tests/**/*.(ts|vue)": [
+      "npm run test:unit"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "dependencies": {
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
@@ -39,6 +54,9 @@
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "typescript": "~3.9.3",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "pretty-quick": "^1.11.1",
+    "husky": "^3.0.5",
+    "lint-staged": "^9.2.5"
   }
 }
